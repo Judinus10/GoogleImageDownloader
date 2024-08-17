@@ -28,4 +28,9 @@ for image in images:
             if ext.lower() not in ['jpg', 'jpeg', 'png', 'gif']:
                 ext = 'jpg'  # Default to jpg if no valid extension found
 
-            
+            # Downloading and saving the image
+            with open(os.path.join('downloaded_images', name + f'.{ext}'), 'wb') as f:
+                im = requests.get(link)
+                f.write(im.content)
+
+            print(f"Downloaded {name}.{ext}")
