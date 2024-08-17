@@ -4,3 +4,6 @@ import os
 from urllib.parse import urljoin
 
 url = "https://unsplash.com/s/photos/nature"
+
+r = requests.get(url)
+soup = BeautifulSoup(r.text, 'html.parser')
