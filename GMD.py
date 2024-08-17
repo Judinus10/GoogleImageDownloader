@@ -9,3 +9,5 @@ r = requests.get(url)
 soup = BeautifulSoup(r.text, 'html.parser')
 
 images = soup.findAll('img')
+
+os.makedirs('downloaded_images', exist_ok=True)
