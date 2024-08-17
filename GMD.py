@@ -20,3 +20,12 @@ for image in images:
 
             # Convert relative URL to absolute if necessary
             link = urljoin(url, link)
+
+             # Extract the file extension from the URL
+            ext = link.split('.')[-1]
+
+            # Ensure the extension is valid (e.g., jpg, png, etc.)
+            if ext.lower() not in ['jpg', 'jpeg', 'png', 'gif']:
+                ext = 'jpg'  # Default to jpg if no valid extension found
+
+            
