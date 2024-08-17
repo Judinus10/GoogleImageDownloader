@@ -13,6 +13,7 @@ images = soup.findAll('img')
 os.makedirs('downloaded_images', exist_ok=True)
 
 for image in images:
+    try:
         # Ensure 'alt' and 'src' are in the image tag attributes
         if 'alt' in image.attrs and 'src' in image.attrs:
             name = image['alt'].replace(" ", "_")  # Replacing spaces with underscores for filename
@@ -21,7 +22,7 @@ for image in images:
             # Convert relative URL to absolute if necessary
             link = urljoin(url, link)
 
-             # Extract the file extension from the URL
+            # Extract the file extension from the URL
             ext = link.split('.')[-1]
 
             # Ensure the extension is valid (e.g., jpg, png, etc.)
@@ -34,3 +35,8 @@ for image in images:
                 f.write(im.content)
 
             print(f"Downloaded {name}.{ext}")
+
+    except Exception as e:
+        print(f"Failed to download {name}: {e}")
+
+print("Download complete.")
